@@ -10,6 +10,7 @@ import Button from "./styledComponents/button"
 import Word from "./styledComponents/Word"
 import Container from "./styledComponents/Container"
 import Meaning from "./styledComponents/Meaning"
+import ProgressBar from "./styledComponents/ProgressBar"
 
 function App() {
   const WordMeaningPair = useSelector(selectCurChallenge)
@@ -51,10 +52,14 @@ function App() {
     <div>
       <Container>
         {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word> </Word>}
-        <p> words to learn: : {wordsLeft}</p>
-        <p>words you know: {wordsKnown}</p>
         {answer}
-        <Button onClick={() => storeInLocalState(WordMeaningPair.word)}>[ ]</Button>
+        <ProgressBar percentage={100 - (wordsLeft / 729) * 100}>
+          <span></span>
+        </ProgressBar>
+        <span>{(100 - (wordsLeft / 729) * 100).toFixed(2)}%</span>
+        <p> words left to learn: : {wordsLeft} </p>
+
+        <Button onClick={() => storeInLocalState(WordMeaningPair.word)}>I know this word</Button>
         <Button primary onClick={handleClick}>
           Next word
         </Button>
