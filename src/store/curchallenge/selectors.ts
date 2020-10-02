@@ -19,3 +19,15 @@ export const selectChallengesLeft = (state: StoreState) => {
 
   return filtered.length
 }
+
+export const selectChallengesDone = (state: StoreState) => {
+  const filtered = state.challenges.filter((challenge) => {
+    if (challenge.word === localStorage.getItem(challenge.word)) {
+      return challenge
+    } else {
+      return null
+    }
+  })
+
+  return filtered.length
+}

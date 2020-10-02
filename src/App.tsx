@@ -4,7 +4,7 @@ import "./App.css"
 import greDictionairy from "./data/gre.json"
 import { setChallenges, stageLocalStorageOfKnownWord } from "./store/challenges/actions"
 import { setCurChallenge } from "./store/curchallenge/actions"
-import { selectChallengesLeft, selectCurChallenge, selectCurChallengeLength } from "./store/curchallenge/selectors"
+import { selectChallengesDone, selectChallengesLeft, selectCurChallenge, selectCurChallengeLength } from "./store/curchallenge/selectors"
 import styled from "styled-components"
 import Button from "./styledComponents/button"
 import Word from "./styledComponents/Word"
@@ -46,15 +46,15 @@ function App() {
   }
 
   const wordsLeft = useSelector(selectChallengesLeft)
-  console.log(wordsLeft)
+  const wordsKnown = useSelector(selectChallengesDone)
   return (
     <div>
-      <button onClick={() => storeInLocalState(WordMeaningPair.word)}>click me</button>
       <Container>
         {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word> </Word>}
-        {wordsLeft}
+        <p> words to learn: : {wordsLeft}</p>
+        <p>words you know: {wordsKnown}</p>
         {answer}
-
+        <Button onClick={() => storeInLocalState(WordMeaningPair.word)}>[ ]</Button>
         <Button primary onClick={handleClick}>
           Next word
         </Button>

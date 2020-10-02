@@ -6,6 +6,8 @@ export default styled.div`
 
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 600px;
+  height: 600px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
 `
