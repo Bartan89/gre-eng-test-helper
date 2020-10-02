@@ -11,6 +11,7 @@ import Word from "./styledComponents/Word"
 import Container from "./styledComponents/Container"
 import Meaning from "./styledComponents/Meaning"
 import ProgressBar from "./styledComponents/ProgressBar"
+import EmjoiEmiter from "./styledComponents/EmjoiEmiter"
 
 function App() {
   const WordMeaningPair = useSelector(selectCurChallenge)
@@ -25,6 +26,10 @@ function App() {
     dispatch(setCurChallenge())
     setShowAnswer(false)
     setAnimate(!animate)
+
+    if (emiter === true) {
+      setEmiter(false)
+    }
   }
 
   const [showAnswer, setShowAnswer] = useState(false)
@@ -42,17 +47,25 @@ function App() {
 
   const steps = useSelector(selectCurChallengeLength)
 
+  const [emiter, setEmiter] = useState(false)
+
   function storeInLocalState(word: string) {
     dispatch(stageLocalStorageOfKnownWord(word))
   }
 
   const wordsLeft = useSelector(selectChallengesLeft)
+
+  useEffect(() => {
+    setEmiter(!emiter)
+  }, [wordsLeft])
+
   const wordsKnown = useSelector(selectChallengesDone)
   return (
     <div>
       <Container>
         {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word> </Word>}
         {answer}
+        <div>{emiter ? <EmjoiEmiter percentage={100 - (wordsLeft / 729) * 100}>👍</EmjoiEmiter> : <div style={{ position: "relative", padding: "10px", height: "40px" }}> </div>}</div>
         <ProgressBar percentage={100 - (wordsLeft / 729) * 100}>
           <span></span>
         </ProgressBar>
