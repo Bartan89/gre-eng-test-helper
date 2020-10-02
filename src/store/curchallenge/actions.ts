@@ -4,7 +4,13 @@ import { SET_CUR_CHALLENGE } from "./types"
 
 export function setCurChallenge() {
   return (dispatch: Dispatch, GetState: GetState) => {
-    const challenges = GetState().challenges
+    const challenges = GetState().challenges.filter((challenge) => {
+      if (challenge.word === localStorage.getItem(challenge.word)) {
+        return null
+      } else {
+        return challenge
+      }
+    })
 
     const randomnr = Math.floor(Math.random() * challenges.length)
 

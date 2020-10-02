@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import "./App.css"
 import greDictionairy from "./data/gre.json"
-import { setChallenges } from "./store/challenges/actions"
+import { setChallenges, stageLocalStorageOfKnownWord } from "./store/challenges/actions"
 import { setCurChallenge } from "./store/curchallenge/actions"
-import { selectCurChallenge, selectCurChallengeLength } from "./store/curchallenge/selectors"
+import { selectChallengesLeft, selectCurChallenge, selectCurChallengeLength } from "./store/curchallenge/selectors"
 import styled from "styled-components"
 import Button from "./styledComponents/button"
 import Word from "./styledComponents/Word"
@@ -41,13 +41,18 @@ function App() {
 
   const steps = useSelector(selectCurChallengeLength)
 
-  console.log(steps)
+  function storeInLocalState(word: string) {
+    dispatch(stageLocalStorageOfKnownWord(word))
+  }
 
+  const wordsLeft = useSelector(selectChallengesLeft)
+  console.log(wordsLeft)
   return (
     <div>
+      <button onClick={() => storeInLocalState(WordMeaningPair.word)}>click me</button>
       <Container>
         {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word> </Word>}
-
+        {wordsLeft}
         {answer}
 
         <Button primary onClick={handleClick}>
