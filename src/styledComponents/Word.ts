@@ -6,14 +6,11 @@ type Test = {
 }
 
 export default styled.h2<Test>`
-  color: black;
   font-family: monospace;
 
   white-space: nowrap;
   overflow: hidden;
   margin: auto;
-  height: 44px;
-  font-size: 40px;
 
   width: ${(props: Test) => `${props.steps}ch`};
 
@@ -22,14 +19,14 @@ export default styled.h2<Test>`
   @keyframes sampleanimation {
     0% {
       width: 0ch;
-      border-right: 4px solid black;
+      border-right: solid white;
     }
     99% {
-      border-right: 4px solid black;
+      border-right: solid white;
     }
     100% {
       width: ${(props: Test) => `(${props.steps}ch)`};
-      border-right: 0px solid black;
+      border-right: solid black;
     }
   }
 `

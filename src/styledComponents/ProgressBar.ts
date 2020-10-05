@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export default styled.div`
   height: 10px; /* Can be anything */
-  width: 500px;
+
   position: relative;
   background: #555;
   -moz-border-radius: 5px;
@@ -10,11 +10,13 @@ export default styled.div`
   border-radius: 5px;
   padding: 5px;
   box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  background: #783463;
   span {
     color: white;
     font-size: 9px;
     display: block;
     height: 100%;
+
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 20px;

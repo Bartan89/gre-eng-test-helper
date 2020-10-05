@@ -5,20 +5,27 @@ type Test = {
 }
 
 export default styled.button<Test>`
-  margin: auto;
   background: transparent;
 
-  background-color: ${(props: Test) => (props.primary ? "#7EB6D7" : "grey")};
-  border: 2px solid black;
-  color: black;
+  height: 2em;
+
+  color: white;
   position: relative;
   margin-bottom: 2px;
-  left: 50px;
+
   margin: 5px;
+  font-size: calc(12px + 6 * ((100vw - 320px) / 680));
+
+  margin: 4px;
+  border: solid 3px white;
 
   :focus {
     outline-color: transparent;
-    border: 2px solid black;
+  }
+
+  :hover {
+    background: white;
+    color: black;
   }
 
   :active {

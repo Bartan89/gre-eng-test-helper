@@ -12,6 +12,7 @@ import Container from "./styledComponents/Container"
 import Meaning from "./styledComponents/Meaning"
 import ProgressBar from "./styledComponents/ProgressBar"
 import EmjoiEmiter from "./styledComponents/EmjoiEmiter"
+import Subcontainer from "./styledComponents/Subcontainer"
 
 function App() {
   const WordMeaningPair = useSelector(selectCurChallenge)
@@ -61,22 +62,29 @@ function App() {
 
   const wordsKnown = useSelector(selectChallengesDone)
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
+      <h1>GRE Vocab test helper:</h1>
       <Container>
-        {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word> </Word>}
-        {answer}
-        <div>{emiter ? <EmjoiEmiter percentage={100 - (wordsLeft / 729) * 100}>👍</EmjoiEmiter> : <div style={{ position: "relative", padding: "10px", height: "40px" }}> </div>}</div>
-        <ProgressBar percentage={100 - (wordsLeft / 729) * 100}>
-          <span></span>
-        </ProgressBar>
-        <span>{(100 - (wordsLeft / 729) * 100).toFixed(2)}%</span>
-        <p> words left to learn: : {wordsLeft} </p>
-
-        <Button onClick={() => storeInLocalState(WordMeaningPair.word)}>I know this word</Button>
-        <Button primary onClick={handleClick}>
-          Next word
-        </Button>
-        <Button onClick={handleCheckAnswerClick}>Check answer</Button>
+        <Subcontainer>
+          {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word> </Word>}
+          {answer}
+        </Subcontainer>
+        <Subcontainer>
+          <div>{emiter ? <EmjoiEmiter percentage={100 - (wordsLeft / 729) * 100}>👍</EmjoiEmiter> : <div style={{ position: "relative", padding: "10px", height: "40px" }}> </div>}</div>
+          <ProgressBar percentage={100 - (wordsLeft / 729) * 100}>
+            <span></span>
+          </ProgressBar>
+          <span>{(100 - (wordsLeft / 729) * 100).toFixed(2)}%</span>
+          <p> words left to learn: : {wordsLeft} </p>
+        </Subcontainer>
+        <Subcontainer>
+          <Button onClick={() => storeInLocalState(WordMeaningPair.word)}>I know this word</Button>
+          <Button primary onClick={handleClick}>
+            Next word
+          </Button>
+          <Button onClick={handleCheckAnswerClick}>Check answer</Button>
+        </Subcontainer>
+        <small style={{ paddingTop: "2px", fontSize: "12px" }}>Bart Kuijper 2020 - not for commercial use</small>
       </Container>
     </div>
   )

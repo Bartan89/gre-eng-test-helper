@@ -1,13 +1,27 @@
 import styled from "styled-components"
 
 export default styled.div`
-  background-color: white;
-  margin: auto;
-
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height: 600px;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  @media (min-width: 0px) {
+    display: grid;
+    grid-template-rows: 100px 200px 100px;
+    grid-template-columns: calc(100vw - 5px);
+  }
+  @media (min-width: 600px) {
+    display: grid;
+    grid-template-rows: 100px 200px 100px;
+    grid-template-columns: 500px;
+    justify-content: center;
+  }
+  @media (min-width: 800px) {
+    display: grid;
+    grid-template-rows: 200px 200px 100px;
+    grid-template-columns: 700px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  margin: 0px;
+  padding: 0px;
+  background-color: whitesmoke;
+  height: 100vw;
+  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
 `

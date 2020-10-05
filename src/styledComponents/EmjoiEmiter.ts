@@ -5,12 +5,13 @@ type Props = {
 }
 
 export default styled.div`
+  text-align: left;
   position: relative;
   animation: emit 3.5s ease-out forwards;
   height: 40px;
   padding: 10px;
   bottom: 0px;
-  left: ${(props: Props) => `${props.percentage * 5}px`};
+  left: ${(props: Props) => `${props.percentage}%`};
   @keyframes emit {
     0% {
       font-size: 0px;
