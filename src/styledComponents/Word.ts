@@ -11,6 +11,7 @@ export default styled.h2<Test>`
   white-space: nowrap;
   overflow: hidden;
   margin: auto;
+  font-size: calc(30px + 6 * ((100vw - 320px) / 680));
 
   width: ${(props: Test) => `${props.steps}ch`};
 

@@ -10,13 +10,13 @@ export default styled.div`
   border-radius: 5px;
   padding: 5px;
   box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-  background: #783463;
+  background: #2c3e4e;
   span {
     color: white;
     font-size: 9px;
     display: block;
     height: 100%;
-
+    color: #2c3e4f;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 20px;

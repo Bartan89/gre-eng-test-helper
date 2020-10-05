@@ -13,6 +13,7 @@ import Meaning from "./styledComponents/Meaning"
 import ProgressBar from "./styledComponents/ProgressBar"
 import EmjoiEmiter from "./styledComponents/EmjoiEmiter"
 import Subcontainer from "./styledComponents/Subcontainer"
+import Heading from "./styledComponents/Heading"
 
 function App() {
   const WordMeaningPair = useSelector(selectCurChallenge)
@@ -62,8 +63,8 @@ function App() {
 
   const wordsKnown = useSelector(selectChallengesDone)
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>GRE Vocab test helper:</h1>
+    <div>
+      <Heading>GRE test helper</Heading>
       <Container>
         <Subcontainer>
           {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word> </Word>}
@@ -75,7 +76,7 @@ function App() {
             <span></span>
           </ProgressBar>
           <span>{(100 - (wordsLeft / 729) * 100).toFixed(2)}%</span>
-          <p> words left to learn: : {wordsLeft} </p>
+          <p> words left to learn: {wordsLeft} </p>
         </Subcontainer>
         <Subcontainer>
           <Button onClick={() => storeInLocalState(WordMeaningPair.word)}>I know this word</Button>

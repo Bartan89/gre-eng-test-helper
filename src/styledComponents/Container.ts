@@ -22,6 +22,6 @@ export default styled.div`
   margin: 0px;
   padding: 0px;
   background-color: whitesmoke;
-  height: 100vw;
+
   font-size: calc(16px + 6 * ((100vw - 320px) / 680));
 `
