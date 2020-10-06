@@ -5,10 +5,10 @@ type Data = {
   meaning: string
 }
 
-const data: Data[] = require("./gre.json")
+import data from "./gre.json"
 
 const improvedData = data
-  .map((datainside) => {
+  .map((datainside: Data) => {
     return { ...datainside, word: datainside.word.charAt(0).toUpperCase() + datainside.word.slice(1) }
   })
   .sort(function (a, b) {
@@ -19,5 +19,3 @@ const improvedData = data
 
 const toWrite = JSON.stringify(improvedData)
 fs.writeFileSync("student-2.json", toWrite)
-
-console.log(improvedData)
