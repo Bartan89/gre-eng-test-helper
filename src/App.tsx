@@ -12,6 +12,7 @@ import Container from "./styledComponents/Container"
 import EmjoiEmiter from "./styledComponents/EmjoiEmiter"
 import Heading from "./styledComponents/Heading"
 import Meaning from "./styledComponents/Meaning"
+import ModalOutside from "./styledComponents/ModalOutside"
 import ModalSubSection from "./styledComponents/ModalSubSection"
 import ProgressBar from "./styledComponents/ProgressBar"
 import Subcontainer from "./styledComponents/Subcontainer"
@@ -105,7 +106,8 @@ function App() {
               )
             })}
           </ModalSubSection>
-          <button onClick={() => setdictionary(!dictionary)}>X</button>
+          <ModalOutside onClick={() => setdictionary(!dictionary)}></ModalOutside>
+          <ModalOutside onClick={() => setdictionary(!dictionary)}></ModalOutside>
         </Modal>
       </div>
       <Heading>GRE test helper</Heading>
