@@ -1,4 +1,4 @@
-# 🗒️GRE-helper and dictionairy🎬
+<!-- # 🗒️GRE-helper and dictionairy🎬
 
 An app that tracks progress in studying for the GRE English vocabulary test.
 
@@ -78,7 +78,7 @@ In this project we try to implement solid version control:
 - clone your app
 - cd into your project
 - npm install
-- npm start
+- npm start -->
 
 I build this app to help my friends with their GRE vocabulary exam: https://gre-vocab-help.netlify.app/
 
