@@ -7,6 +7,7 @@ import { setChallenges, stageLocalStorageOfKnownWord } from "./store/challenges/
 import { selectAllChallenges } from "./store/challenges/selectors"
 import { setCurChallenge } from "./store/curchallenge/actions"
 import { selectChallengesDone, selectChallengesLeft, selectCurChallenge, selectCurChallengeLength } from "./store/curchallenge/selectors"
+import AbcButton from "./styledComponents/AbcButton"
 import Button from "./styledComponents/button"
 import Container from "./styledComponents/Container"
 import EmjoiEmiter from "./styledComponents/EmjoiEmiter"
@@ -66,7 +67,10 @@ function App() {
 
   const wordsKnown = useSelector(selectChallengesDone)
 
-  const [dictionary, setdictionary] = useState(false)
+  const [dictionary, setdictionary] = useState<boolean | null>(null)
+  useEffect(() => {
+    console.log(dictionary)
+  }, [dictionary])
 
   const allChallenges = useSelector(selectAllChallenges)
 
@@ -104,22 +108,19 @@ function App() {
 
   return (
     <div>
-      <Modal active={dictionary}>
+      <Modal show={dictionary}>
         <ModalSubSection>
           {abc.map((letter) => {
             return (
               <div>
-                <button style={{ width: "2em" }} onClick={() => handleFilterOnLetter(letter)}>
+                <AbcButton style={{ width: "2em" }} onClick={() => handleFilterOnLetter(letter)}>
                   <small>{letter}</small>
-                </button>
+                </AbcButton>
               </div>
             )
           })}
         </ModalSubSection>
         <ModalSubSection>
-          <button style={{ textAlign: "end", justifySelf: "end !important" }} onClick={() => setdictionary(!dictionary)}>
-            X
-          </button>
           {dictionaryOnLetter?.map((challenge) => {
             return (
               <div>
@@ -129,40 +130,42 @@ function App() {
             )
           })}
         </ModalSubSection>
-        <ModalOutside onClick={() => setdictionary(!dictionary)}></ModalOutside>
+        <ModalOutside onClick={() => setdictionary(dictionary === null ? true : !dictionary)}></ModalOutside>
       </Modal>
-      <Heading>GRE test helper</Heading>
-      <Container>
-        <Subcontainer>
-          {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word></Word>}
-          {answer}
-        </Subcontainer>
+      <div>
+        <Heading>GRE test helper</Heading>
+        <Container>
+          <Subcontainer>
+            {animate ? <Word steps={steps}>{WordMeaningPair.word}</Word> : <Word></Word>}
+            {answer}
+          </Subcontainer>
 
-        <Subcontainer>
-          <div>{emiter ? <EmjoiEmiter percentage={100 - (wordsLeft / 729) * 100}>👍</EmjoiEmiter> : <div style={{ position: "relative", padding: "10px", height: "40px" }}> </div>}</div>
-          {showProgress ? (
-            <ProgressBar percentage={percentageToSend}>
-              <span></span>
-            </ProgressBar>
-          ) : (
-            ""
-          )}
-          <span>{(100 - (wordsLeft / 729) * 100).toFixed(2)}%</span>
-          <p> words left to learn: {wordsLeft} </p>
-        </Subcontainer>
-        <Subcontainer>
-          <Button onClick={() => storeInLocalState(WordMeaningPair.word)}>Got it</Button>
-          <Button primary onClick={handleClick}>
-            Next
-          </Button>
-          <Button primary onClick={() => setdictionary(!dictionary)}>
-            Dictionary
-          </Button>
-          <Button onClick={handleCheckAnswerClick}>Meaning</Button>
-          <small style={{ display: "block", fontSize: "12px" }}>check the meaning of the word</small>
-        </Subcontainer>
-        <small style={{ paddingTop: "2px", fontSize: "12px" }}>Bart Kuijper 2020 - not for commercial use</small>
-      </Container>
+          <Subcontainer>
+            <div>{emiter ? <EmjoiEmiter percentage={100 - (wordsLeft / 729) * 100}>👍</EmjoiEmiter> : <div style={{ position: "relative", padding: "10px", height: "40px" }}> </div>}</div>
+            {showProgress ? (
+              <ProgressBar percentage={percentageToSend}>
+                <span></span>
+              </ProgressBar>
+            ) : (
+              ""
+            )}
+            <span>{(100 - (wordsLeft / 729) * 100).toFixed(2)}%</span>
+            <p> words left to learn: {wordsLeft} </p>
+          </Subcontainer>
+          <Subcontainer>
+            <Button onClick={() => storeInLocalState(WordMeaningPair.word)}>Got it</Button>
+            <Button primary onClick={handleClick}>
+              Next
+            </Button>
+            <Button primary onClick={() => setdictionary(dictionary === null ? true : !dictionary)}>
+              Dictionary
+            </Button>
+            <Button onClick={handleCheckAnswerClick}>Meaning</Button>
+            <small style={{ display: "block", fontSize: "12px" }}>check the meaning of the word</small>
+          </Subcontainer>
+          <small style={{ paddingTop: "2px", fontSize: "12px" }}>Bart Kuijper 2020 - not for commercial use</small>
+        </Container>
+      </div>
     </div>
   )
 }

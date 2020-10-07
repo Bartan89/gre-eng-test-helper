@@ -16,7 +16,6 @@ export default styled.div`
     display: grid;
     grid-template-rows: 200px 200px 100px;
     grid-template-columns: 700px;
-    margin-top: 20px;
     justify-content: center;
   }
   margin: 0px;
