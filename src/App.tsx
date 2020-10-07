@@ -81,35 +81,56 @@ function App() {
     setdictionaryOnLetter(result)
   }
 
+  const percentageToSend = 100 - (wordsLeft / 729) * 100
+
+  const [showProgress, setshowProgress] = useState(false)
+
+  useEffect(() => {
+    if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf("OPR")) != -1) {
+      setshowProgress(true)
+    } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+      setshowProgress(true)
+    } else if (navigator.userAgent.indexOf("Safari") != -1) {
+      setshowProgress(false)
+    } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+      setshowProgress(true)
+    } else if (navigator.userAgent.indexOf("MSIE") != -1 || !!document.DOCUMENT_NODE == true) {
+      //IF IE > 10
+      setshowProgress(true)
+    } else {
+      setshowProgress(true)
+    }
+  }, [])
+
   return (
     <div>
-      <div style={{ margin: "auto" }}>
-        <Modal active={dictionary}>
-          <ModalSubSection>
-            {abc.map((letter) => {
-              return (
-                <div>
-                  <button onClick={() => handleFilterOnLetter(letter)}>
-                    <small>{letter}</small>
-                  </button>
-                </div>
-              )
-            })}
-          </ModalSubSection>
-          <ModalSubSection>
-            {dictionaryOnLetter?.map((challenge) => {
-              return (
-                <div>
-                  <p>{challenge.word}</p>
-                  <small>{challenge.meaning}</small>
-                </div>
-              )
-            })}
-          </ModalSubSection>
-          <ModalOutside onClick={() => setdictionary(!dictionary)}></ModalOutside>
-          <ModalOutside onClick={() => setdictionary(!dictionary)}></ModalOutside>
-        </Modal>
-      </div>
+      <Modal active={dictionary}>
+        <ModalSubSection>
+          {abc.map((letter) => {
+            return (
+              <div>
+                <button style={{ width: "2em" }} onClick={() => handleFilterOnLetter(letter)}>
+                  <small>{letter}</small>
+                </button>
+              </div>
+            )
+          })}
+        </ModalSubSection>
+        <ModalSubSection>
+          <button style={{ textAlign: "end", justifySelf: "end !important" }} onClick={() => setdictionary(!dictionary)}>
+            X
+          </button>
+          {dictionaryOnLetter?.map((challenge) => {
+            return (
+              <div>
+                <p>{challenge.word}</p>
+                <small>{challenge.meaning}</small>
+              </div>
+            )
+          })}
+        </ModalSubSection>
+        <ModalOutside onClick={() => setdictionary(!dictionary)}></ModalOutside>
+      </Modal>
       <Heading>GRE test helper</Heading>
       <Container>
         <Subcontainer>
@@ -119,9 +140,13 @@ function App() {
 
         <Subcontainer>
           <div>{emiter ? <EmjoiEmiter percentage={100 - (wordsLeft / 729) * 100}>👍</EmjoiEmiter> : <div style={{ position: "relative", padding: "10px", height: "40px" }}> </div>}</div>
-          <ProgressBar percentage={100 - (wordsLeft / 729) * 100}>
-            <span></span>
-          </ProgressBar>
+          {showProgress ? (
+            <ProgressBar percentage={percentageToSend}>
+              <span></span>
+            </ProgressBar>
+          ) : (
+            ""
+          )}
           <span>{(100 - (wordsLeft / 729) * 100).toFixed(2)}%</span>
           <p> words left to learn: {wordsLeft} </p>
         </Subcontainer>
@@ -131,7 +156,7 @@ function App() {
             Next
           </Button>
           <Button primary onClick={() => setdictionary(!dictionary)}>
-            Dictionairy
+            Dictionary
           </Button>
           <Button onClick={handleCheckAnswerClick}>Meaning</Button>
           <small style={{ display: "block", fontSize: "12px" }}>check the meaning of the word</small>

@@ -5,7 +5,7 @@ type PropsDisplay = {
 }
 
 export default styled.div`
-  z-index: 100000000;
+  z-index: 2;
   position: absolute;
 
   display: ${(props: PropsDisplay) => (props.active ? "grid" : "none")};
