@@ -34,6 +34,9 @@ export default styled.div`
       left: calc(-100% - 5px);
     }
 
+    70% {
+      left: 20px;
+    }
     100% {
       left: 0px;
     }

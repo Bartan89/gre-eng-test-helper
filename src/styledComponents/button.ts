@@ -12,6 +12,7 @@ export default styled.button<Test>`
   color: white;
   position: relative;
   margin-bottom: 2px;
+  
 
   margin: 5px;
   font-size: calc(12px + 6 * ((100vw - 320px) / 680));

@@ -16,7 +16,7 @@ export const setChallenges = (challenges: WordMeaningPair[]) => {
   }
 }
 
-export const stageLocalStorageOfKnownWord = (word: string) => {
+export const usrKnownWord = (word: string) => {
   return (dispatch: Dispatch) => {
     dispatch({
       type: STORE_WORD_IN_LOCAL_STORAGE,

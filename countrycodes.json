@@ -1,0 +1,87 @@
+[
+  {
+    "region": "Chinese-Simplified",
+    "shopperLocalle": "zh-CN",
+    "countryCode": "CN"
+  },
+  {
+    "region": "Chinese-Traditional",
+    "shopperLocalle": "zh-TW",
+    "countryCode": "TW"
+  },
+  {
+    "region": "Danish",
+    "shopperLocalle": "da-DK",
+    "countryCode": "DK"
+  },
+  {
+    "region": "Dutch",
+    "shopperLocalle": "nl-NL",
+    "countryCode": "NL"
+  },
+  {
+    "region": "English-US",
+    "shopperLocalle": "en-US",
+    "countryCode": "US"
+  },
+  {
+    "region": "Finnish",
+    "shopperLocalle": "fi-FI",
+    "countryCode": "FI"
+  },
+  {
+    "region": "French",
+    "shopperLocalle": "fr-FR",
+    "countryCode": "FR"
+  },
+  {
+    "region": "German",
+    "shopperLocalle": "de-DE",
+    "countryCode": "DE"
+  },
+  {
+    "region": "Italian",
+    "shopperLocalle": "it-IT",
+    "countryCode": "IT"
+  },
+  {
+    "region": "Japanese",
+    "shoppenLocalle": "ja-JP",
+    "countryCode": "JP"
+  },
+  {
+    "region": "Korean",
+    "shoppenLocalle": "ko-KR",
+    "countryCode": "KR"
+  },
+  {
+    "region": "Norwegian",
+    "shoppenLocalle": "no-NO",
+    "countryCode": "NO"
+  },
+  {
+    "region": "Polish",
+    "shoppenLocalle": "pl-PL",
+    "countryCode": "PL"
+  },
+  {
+    "region": "Portuguese",
+    "shoppenLocalle": "pt-BR",
+    "countryCode": "BR"
+  },
+  {
+    "region": "Russian",
+    "shoppenLocalle": "ru-RU",
+    "countryCode": "RU"
+  },
+  {
+    "region": "Spanish",
+    "shoppenLocalle": "es-ES",
+    "countryCode": "ES"
+  },
+  {
+    "region": "Swedish",
+    "shoppenLocalle": "sv-SE",
+    "countryCode": "SE"
+  }
+]

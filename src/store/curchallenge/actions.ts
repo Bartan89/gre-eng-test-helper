@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 import { GetState } from "../types"
-import { SET_CUR_CHALLENGE } from "./types"
+import { SET_CUR_CHALLENGE, USER_WANTS_MEANING } from "./types"
 
 export function setCurChallenge() {
   return (dispatch: Dispatch, GetState: GetState) => {
@@ -15,13 +15,34 @@ export function setCurChallenge() {
     const randomnr = Math.floor(Math.random() * challenges.length)
 
     const curChallenge = {
-      word: challenges[randomnr].word,
-      meaning: challenges[randomnr].meaning
+      word: challenges[randomnr].word
     }
 
     console.log("hello here then?")
 
     dispatch(dispatchSetChallenge(curChallenge))
+  }
+}
+
+export function usrWantsMeaning() {
+  return (dispatch: Dispatch, getState: GetState) => {
+    console.log("am I being hit action???")
+    const curword = getState().curchallenge.word
+
+    const challenge = getState().challenges.find((challenge: WordMeaningPair) => {
+      if (challenge.word === curword) {
+        return challenge
+      }
+    })
+
+    const meaning = challenge?.meaning
+
+    console.log("hello from action!!!", meaning)
+
+    dispatch({
+      type: USER_WANTS_MEANING,
+      meaning
+    })
   }
 }
 

@@ -2,15 +2,19 @@ import styled from "styled-components"
 
 type Props = {
   percentage: number
+  deviation: number
 }
 
 export default styled.div`
   text-align: left;
-  position: relative;
-  animation: emit 2.5s ease-out forwards;
+  position: absolute;
+
+  animation: emit 3.5s ease-out forwards;
+
   height: 40px;
   padding: 10px;
   bottom: 0px;
+
   left: ${(props: Props) => `${props.percentage}%`};
   @keyframes emit {
     0% {
@@ -27,7 +31,7 @@ export default styled.div`
     }
     100% {
       font-size: 25px;
-      bottom: 200px;
+      bottom: ${(props: Props) => `${props.deviation}px`};
       opacity: 0;
     }
   }

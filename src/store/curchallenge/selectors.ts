@@ -1,6 +1,6 @@
 import { StoreState } from "../types"
 
-export const selectCurChallenge = (state: StoreState): WordMeaningPair => {
+export const slctCurChallenge = (state: StoreState): WordMeaningPair => {
   return state.curchallenge
 }
 
