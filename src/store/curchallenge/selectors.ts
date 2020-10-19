@@ -4,6 +4,10 @@ export const slctCurChallenge = (state: StoreState): WordMeaningPair => {
   return state.curchallenge
 }
 
+export const slctIfChallgeHasnStarted = (state: StoreState): String => {
+  return state.curchallenge.word
+}
+
 export const selectCurChallengeLength = (state: StoreState): number => {
   return state.curchallenge.word.length
 }

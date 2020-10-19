@@ -14,7 +14,7 @@ export default styled.button<Test>`
   margin-bottom: 2px;
   
 
-  margin: 5px;
+  padding: 4px;
   font-size: calc(12px + 6 * ((100vw - 320px) / 680));
 
   margin: 4px;

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import "./App.css"
 import ButtonsBottomPage from "./components/ButtonsBottomPage"
-import EmoticonAppraisal from "./components/EmoticonAppraisal"
 import ModalDictionary from "./components/ModalDictionary"
 import greDictionairy from "./data/gre-sorted-cleaned.json"
 import { setChallenges } from "./store/challenges/actions"
@@ -10,17 +9,18 @@ import {
   selectChallengesDone,
   selectChallengesLeft,
   selectCurChallengeLength,
-  slctCurChallenge
+  slctCurChallenge,
+  slctIfChallgeHasnStarted
 } from "./store/curchallenge/selectors"
 import { slctShowDictionary } from "./store/uistate/selectors"
 import Test from "./styledComponents/ Test"
 import Container from "./styledComponents/Container"
-import EmjoiEmiter from "./styledComponents/EmjoiEmiter"
 import Heading from "./styledComponents/Heading"
 import Meaning from "./styledComponents/Meaning"
 import ProgressBar from "./styledComponents/ProgressBar"
 import Subcontainer from "./styledComponents/Subcontainer"
 import Word from "./styledComponents/Word"
+import Button from "./styledComponents/button"
 
 function App() {
   const curWordMeaning = useSelector(slctCurChallenge)
@@ -78,6 +78,10 @@ function App() {
     }
   }, [])
 
+  const onNoChallenge = useSelector(slctIfChallgeHasnStarted)
+
+
+
   return (
     <div>
       <ModalDictionary />
@@ -85,6 +89,8 @@ function App() {
         <Heading>GRE test helper</Heading>
         <Container>
           <Subcontainer>
+            {onNoChallenge ? "" : <p style={{ overflow : "scroll"}}>To get started press <Button>Next</Button>.  If you know a word press <Button>Got it</Button> will be taken out of the list and you won't see it again. For Dictionairy <Button>Dictionairy</Button>. Don't know a word? press: <Button>Meaning</Button></p>}
+        
             {animate ? <Word steps={steps}>{curWordMeaning.word}</Word> : <Word></Word>}
             {curWordMeaning.meaning}
           </Subcontainer>

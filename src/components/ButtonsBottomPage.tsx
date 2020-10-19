@@ -17,7 +17,7 @@ export default function ButtonsBottomPage() {
 
 
 
-  const [disable, setdisable] = useState(false)
+  const [disable, setdisable] = useState(true)
 
   const dispatch = useDispatch()
   const curWordMeaning = useSelector(slctCurChallenge)
