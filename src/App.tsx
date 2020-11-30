@@ -86,7 +86,7 @@ function App() {
     <div>
       <ModalDictionary />
       <div>
-        <Heading>GRE helper for students</Heading>
+        <Heading>ASDFIJASDFIJASDIFJADSFIJDAF</Heading>
         <Container>
           <Subcontainer>
             {onNoChallenge ? "" : <p style={{ overflow: "scroll" }}>To get started press <Button>Next</Button>.  If you know a word press <Button>Got it</Button> will be taken out of the list and you won't see it again. For Dictionairy <Button>Dictionairy</Button>. Don't know a word? press: <Button>Meaning</Button></p>}
