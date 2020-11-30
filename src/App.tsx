@@ -86,26 +86,26 @@ function App() {
     <div>
       <ModalDictionary />
       <div>
-        <Heading>GRE test helper</Heading>
+        <Heading>GRE helper for students</Heading>
         <Container>
           <Subcontainer>
-            {onNoChallenge ? "" : <p style={{ overflow : "scroll"}}>To get started press <Button>Next</Button>.  If you know a word press <Button>Got it</Button> will be taken out of the list and you won't see it again. For Dictionairy <Button>Dictionairy</Button>. Don't know a word? press: <Button>Meaning</Button></p>}
-        
+            {onNoChallenge ? "" : <p style={{ overflow: "scroll" }}>To get started press <Button>Next</Button>.  If you know a word press <Button>Got it</Button> will be taken out of the list and you won't see it again. For Dictionairy <Button>Dictionairy</Button>. Don't know a word? press: <Button>Meaning</Button></p>}
+
             {animate ? <Word steps={steps}>{curWordMeaning.word}</Word> : <Word></Word>}
             {curWordMeaning.meaning}
           </Subcontainer>
 
           <Subcontainer>
-      <Test />
-           
+            <Test />
+
 
             {showProgress ? (
               <ProgressBar percentage={percentageToSend}>
                 <span></span>
               </ProgressBar>
             ) : (
-              ""
-            )}
+                ""
+              )}
             <span>{(100 - (wordsLeft / 729) * 100).toFixed(2)}%</span>
             <p> words left to learn: {wordsLeft} </p>
           </Subcontainer>
